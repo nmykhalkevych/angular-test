@@ -1,0 +1,11 @@
+{
+  "AUTH": {
+    "TEXT": {
+      "LOGIN": "Login"
+    },
+    "LABELS": {
+      "EMAIL": "Email",
+      "PASSWORD": "Password"
+    }
+  }
+}

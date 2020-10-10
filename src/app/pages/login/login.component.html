@@ -1,0 +1,39 @@
+<div class="login-wrapper">
+  <mat-card class="mat-elevation-z24 login-form">
+    <form novalidate [formGroup]="loginForm" (ngSubmit)="signIn()">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error
+          *ngIf="
+            loginForm.get('email').hasError('email') &&
+            !loginForm.get('email').hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('required')">
+          Email is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" />
+        <mat-error
+          *ngIf="
+            loginForm.get('password').hasError('minlength') &&
+            !loginForm.get('password').hasError('required')
+          "
+        >
+          Password should be at least 6 characters
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+          Password is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="primary">Sign In</button>
+    </form>
+  </mat-card>
+</div>

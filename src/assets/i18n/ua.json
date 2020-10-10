@@ -1,0 +1,12 @@
+{
+  "AUTH": {
+    "TEXT": {
+      "LOGIN": "Login",
+      "LOGINWITH": "Or Login With"
+    },
+    "LABELS": {
+      "EMAIL": "Email",
+      "PASSWORD": "Password"
+    }
+  }
+}
