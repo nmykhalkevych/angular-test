@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 
 const state: State = {
   isLoggedIn: false,
+  languages: ['en', 'ua'],
+  defaultLang: 'en',
 };
 @Injectable({
   providedIn: 'root',

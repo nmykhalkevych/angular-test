@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
   get(
@@ -13,7 +15,7 @@ export class ApiService {
     params = {},
     headers: HttpHeaders = new HttpHeaders()
   ): Observable<any> {
-    return this.http.get(path, { headers, params }).pipe(
+    return this.http.get(`${this.apiUrl}${path}`, { headers, params }).pipe(
       catchError((err) => this.formatErrors(err)),
       map(this.toJSON)
     );
@@ -24,10 +26,12 @@ export class ApiService {
     params = {},
     headers: HttpHeaders = new HttpHeaders()
   ): Observable<any> {
-    return this.http.post(path, body, { headers, params }).pipe(
-      catchError((err) => this.formatErrors(err)),
-      map(this.toJSON)
-    );
+    return this.http
+      .post(`${this.apiUrl}${path}`, body, { headers, params })
+      .pipe(
+        catchError((err) => this.formatErrors(err)),
+        map(this.toJSON)
+      );
   }
 
   put(
@@ -36,14 +40,19 @@ export class ApiService {
     params = {},
     headers: HttpHeaders = new HttpHeaders()
   ): Observable<any> {
-    return this.http.put(path, body, { headers, params }).pipe(
-      catchError((err) => this.formatErrors(err)),
-      map(this.toJSON)
-    );
+    return this.http
+      .put(`${this.apiUrl}${path}`, body, { headers, params })
+      .pipe(
+        catchError((err) => this.formatErrors(err)),
+        map(this.toJSON)
+      );
   }
 
-  delete(path, headers: HttpHeaders = new HttpHeaders()): Observable<any> {
-    return this.http.delete(path, { headers }).pipe(
+  delete(
+    path: string,
+    headers: HttpHeaders = new HttpHeaders()
+  ): Observable<any> {
+    return this.http.delete(`${this.apiUrl}${path}`, { headers }).pipe(
       catchError((err) => this.formatErrors(err)),
       map(this.toJSON)
     );

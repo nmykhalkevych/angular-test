@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   signIn(): void {
     if (this.loginForm.valid) {
-      this.authService.signIn(this.loginForm.value);
+      this.authService.signIn(this.loginForm.value).subscribe();
     }
   }
 }

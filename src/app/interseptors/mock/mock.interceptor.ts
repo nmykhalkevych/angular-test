@@ -16,7 +16,7 @@ export class MockInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request.url.endsWith('/api/auth') && request.method === 'POST') {
+    if (request.url.endsWith('/api/auth/login') && request.method === 'POST') {
       console.log(request);
       return of(
         new HttpResponse({

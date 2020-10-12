@@ -28,7 +28,7 @@ export class AuthService {
       map((response) => {
         localStorage.setItem('isLoggedIn', 'true');
         this.store.set('isLoggedIn', true);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['cameras']);
         return response;
       })
     );

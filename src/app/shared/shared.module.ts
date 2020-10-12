@@ -4,10 +4,19 @@ import { MaterialModule } from './material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from '../components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent],
-  imports: [CommonModule, TranslateModule, HttpClientModule, MaterialModule],
-  exports: [HeaderComponent, HttpClientModule, MaterialModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    TranslateModule,
+    HttpClientModule,
+    MaterialModule,
+  ],
+  exports: [HeaderComponent, FormsModule, HttpClientModule, MaterialModule],
 })
 export class SharedModule {}

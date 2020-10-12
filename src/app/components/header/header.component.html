@@ -1,1 +1,32 @@
-<p>header works!</p>
+<mat-toolbar>
+  <div class="logo">
+    <img src="../../../assets/image/logo.svg" alt="logotype" />
+  </div>
+
+  <nav *ngIf="isLoggedIn | async">
+    <a [routerLink]="['/cameras']" [routerLinkActive]="'active'">Cameras</a>
+    <a [routerLink]="['/reporting']" [routerLinkActive]="'active'">Reporting</a>
+    <a [routerLink]="['/settings']" [routerLinkActive]="'active'">Settings</a>
+  </nav>
+
+  <div class="right">
+    <mat-form-field class="language-select">
+      <mat-select [(ngModel)]="selectedLang">
+        <mat-option *ngFor="let lang of languages" [value]="lang">
+          {{ lang | uppercase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" *ngIf="!isLoggedIn | async">
+      Login
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      *ngIf="isLoggedIn | async"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
