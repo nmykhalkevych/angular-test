@@ -4,9 +4,12 @@ import { pluck, distinctUntilChanged } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 const state: State = {
-  isLoggedIn: false,
+  isLoggedIn: !!localStorage.getItem('isLoggedIn'),
   languages: ['en', 'ua'],
-  defaultLang: 'en',
+  defaultLang: localStorage.getItem('lang') || 'en',
+  user: localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : null,
 };
 @Injectable({
   providedIn: 'root',
@@ -14,6 +17,8 @@ const state: State = {
 export class Store {
   private subject = new BehaviorSubject<State>(state);
   private store = this.subject.asObservable().pipe(distinctUntilChanged());
+
+  constructor() {}
 
   get value() {
     return this.subject.value;
@@ -30,3 +35,5 @@ export class Store {
     return this.store.pipe(pluck(name));
   }
 }
+
+const defaultState = () => {};

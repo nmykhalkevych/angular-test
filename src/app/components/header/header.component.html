@@ -4,29 +4,36 @@
   </div>
 
   <nav *ngIf="isLoggedIn | async">
-    <a [routerLink]="['/cameras']" [routerLinkActive]="'active'">Cameras</a>
-    <a [routerLink]="['/reporting']" [routerLinkActive]="'active'">Reporting</a>
-    <a [routerLink]="['/settings']" [routerLinkActive]="'active'">Settings</a>
+    <a [routerLink]="['/cameras']" [routerLinkActive]="'active'">{{
+      "HEADER.MENU.CAMERAS" | translate
+    }}</a>
+    <a [routerLink]="['/reporting']" [routerLinkActive]="'active'">{{
+      "HEADER.MENU.REPORTING" | translate
+    }}</a>
+    <a [routerLink]="['/settings']" [routerLinkActive]="'active'">{{
+      "HEADER.MENU.SETTINGS" | translate
+    }}</a>
   </nav>
 
   <div class="right">
-    <mat-form-field class="language-select">
-      <mat-select [(ngModel)]="selectedLang">
+    <mat-form-field class="language-select" *ngIf="!(isLoggedIn | async)">
+      <mat-select
+        [(ngModel)]="selectedLang"
+        (selectionChange)="changeLanguage($event.value)"
+      >
         <mat-option *ngFor="let lang of languages" [value]="lang">
           {{ lang | uppercase }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" *ngIf="!isLoggedIn | async">
-      Login
-    </button>
+    <span class="user" *ngIf="user"> {{ user.name }}</span>
     <button
       mat-raised-button
       color="primary"
       *ngIf="isLoggedIn | async"
       (click)="logout()"
     >
-      Logout
+      {{ "HEADER.LOGOUT" | translate }}
     </button>
   </div>
 </mat-toolbar>

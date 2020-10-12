@@ -1,11 +1,21 @@
 {
-  "AUTH": {
-    "TEXT": {
-      "LOGIN": "Login"
-    },
-    "LABELS": {
-      "EMAIL": "Email",
-      "PASSWORD": "Password"
+  "HEADER": {
+    "LOGOUT": "Logout",
+    "MENU": {
+      "CAMERAS": "Cameras",
+      "REPORTING": "Reporting",
+      "SETTINGS": "Settings"
     }
+  },
+  "AUTH": {
+    "TITLE": "Login",
+    "LABELS": {
+      "USERNAME": "Username",
+      "PASSWORD": "Password"
+    },
+    "ERRORS": {
+      "REQUIRED": "Field is required"
+    },
+    "BTN": "Sign In"
   }
 }

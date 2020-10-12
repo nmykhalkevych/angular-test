@@ -1,12 +1,21 @@
 {
-  "AUTH": {
-    "TEXT": {
-      "LOGIN": "Login",
-      "LOGINWITH": "Or Login With"
-    },
-    "LABELS": {
-      "EMAIL": "Email",
-      "PASSWORD": "Password"
+  "HEADER": {
+    "LOGOUT": "Вийти",
+    "MENU": {
+      "CAMERAS": "Камери",
+      "REPORTING": "Звітність",
+      "SETTINGS": "Налаштування"
     }
+  },
+  "AUTH": {
+    "TITLE": "Логін",
+    "LABELS": {
+      "USERNAME": "Ім'я",
+      "PASSWORD": "Пароль"
+    },
+    "ERRORS": {
+      "REQUIRED": "Обов'язкове поле"
+    },
+    "BTN": "Увійти"
   }
 }

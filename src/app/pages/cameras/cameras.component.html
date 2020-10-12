@@ -1,1 +1,24 @@
-<p>cameras works!</p>
+<div class="container">
+  <div class="grid">
+    <mat-card *ngFor="let camera of cameras">
+      <mat-card-header>
+        <mat-card-title>ID: {{ camera.id }}</mat-card-title>
+        <mat-card-subtitle
+          >Status:
+          <span
+            [ngStyle]="{ color: camera.status === 'fail' ? 'red' : 'green' }"
+          >
+            {{ camera.status }}
+          </span></mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content class="slider-wrap">
+        <swiper>
+          <div *ngFor="let image of camera.images">
+            <img [src]="image" alt="Photo of a Shiba Inu" />
+          </div>
+        </swiper>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

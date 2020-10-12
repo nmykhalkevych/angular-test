@@ -15,19 +15,15 @@ export class AuthService {
     private router: Router,
     private apiService: ApiService,
     private store: Store
-  ) {
-    this.store.set('isLoggedIn', this.getDefaultLoggedInState());
-  }
-
-  private getDefaultLoggedInState(): boolean {
-    return !!localStorage.getItem('isLoggedIn');
-  }
+  ) {}
 
   signIn(credentials): Observable<any> {
     return this.apiService.post(`${this.apiPrefix}/login`, credentials).pipe(
       map((response) => {
         localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('user', JSON.stringify(response));
         this.store.set('isLoggedIn', true);
+        this.store.set('user', response);
         this.router.navigate(['cameras']);
         return response;
       })
@@ -38,7 +34,9 @@ export class AuthService {
     return this.apiService.delete(`${this.apiPrefix}/logout`).pipe(
       map((response) => {
         localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('user');
         this.store.set('isLoggedIn', false);
+        this.store.set('user', null);
         this.router.navigateByUrl('login');
         return response;
       })

@@ -1,1 +1,10 @@
-<p>settings works!</p>
+<div class="container">
+  <p>settings works!</p>
+  <mat-form-field class="language-select">
+    <mat-select [(ngModel)]="selectedLang" (selectionChange)="changeLanguage($event.value)">
+      <mat-option *ngFor="let lang of languages" [value]="lang">
+        {{ lang | uppercase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
